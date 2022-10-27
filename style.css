@@ -1,9 +1,22 @@
+body{
+    background-color: #2a0a43;
+}
+
 h1{
+    color: ivory;
+    background-color: #e79b3e;
+    width: 200px;
     text-decoration: underline;
+    text-align: center;
 }
 
 .list{
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 200px;
+}
+
+a{
+    color: ivory;
 }
