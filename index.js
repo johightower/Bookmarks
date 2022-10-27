@@ -1,4 +1,5 @@
 let searchBar = document.querySelector("#searchBar")
+let bookmarkNamer = document.querySelector("#bookmarkNamer")
 
 searchBar.addEventListener("input", (event) =>{
     let searchBarValue = searchBar.value.toLowerCase();
@@ -7,37 +8,35 @@ searchBar.addEventListener("input", (event) =>{
 })
 
 
-let searchBookmarks = document.querySelector("#searchBookmark")
+//instead of bookmark object have bookmark class
+//create bookmark class with a render method
 
-function filterBookmarks(searchBookmarkInput){
-    searchBookmarkInput = searchBar.value.includes(searchBookmarks.value)
-    return searchBookmarkInput
-}
-
-searchBookmarks.addEventListener("input", (event) =>{
-    let searchBookmarkValue = searchBookmarks.value.toLowerCase();
-    console.log("this is inputVal", searchBookmarkValue)
-    
-})
+//change bookmarks class to use .map
 
 
-
-class Bookmarks{
+class Bookmark{
     constructor(){
         this.bookmarks = []
     }
     render(){
         const bookmarkList = document.querySelector(".list")
-        bookmarkList.innerHTML = ''
-        let x = this.bookmarks
-        x.filter(filterBookmarks)
-        for(let bookmark of x){
-            const listItem = document.createElement("a")
-            listItem.textContent = bookmark
-            listItem.href = bookmark
-            bookmarkList.append(listItem)
+        const listItem = document.createElement("a")
+        listItem.textContent = bookmarkNamer.value
+        listItem.href = searchBar.value
+        bookmarkList.append(listItem)
         }
-    }
+    // render(){
+    //     const bookmarkList = document.querySelector(".list")
+    //     bookmarkList.innerHTML = ''
+    //     let x = this.bookmarks
+    //     for(let bookmark of x){
+    //         const listItem = document.createElement("a")
+    //         listItem.textContent = bookmarkNamer.value
+    //         listItem.href = bookmark
+    //         bookmarkList.append(listItem)
+    //     }
+    // }
+
 
     addBookmark(){
         this.bookmarks.push(searchBar.value)
@@ -45,7 +44,7 @@ class Bookmarks{
     }
 }
 
-let b = new Bookmarks()
+let b = new Bookmark()
 
 let addBookmark = document.querySelector("button")
 addBookmark.addEventListener("click", function(){
@@ -53,3 +52,16 @@ addBookmark.addEventListener("click", function(){
     searchBar.value = ''
     b.render()
 })
+
+// function deleteBookmarks(){
+    //loop through the array of bookmarks
+    //if (bookmarks[i].url == url){
+//         bookmarks.splice(i,1);
+//     }
+// }
+
+class Bookmarks{
+    constructor (){
+        this.sortedBookmarks =[];
+    }
+}
